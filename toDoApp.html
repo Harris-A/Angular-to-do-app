@@ -1,0 +1,73 @@
+<!doctype html>
+<html lan="en" ng-app="ToDo">
+    <head>
+        <meta charset="UTF-8">
+        <title>TO DO APP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+            
+        <link rel="stylesheet" href="App.css">
+        
+    
+    </head>
+    
+   <body>
+     
+     <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1>To Do List Application</h1>      
+        <p>Here I have created a 'To Do List' application where users are able to add to their list and also remove completed tasks!</p>
+        <p>I have used Angular models and controllers in order to control what happens with what the user sees and interacts with.</p>
+      </div>
+    </div>
+
+     
+            <div class="container">
+                <div ng-controller="todoController">
+                 <form name="frm" ng-submit="addTodo()">
+                     <input type="text" name="newtodo" ng-model="newTodo" required />
+                     <button id="btn-go" ng-disabled="frm.$invalid">Go</button>
+                     <button id="btn-clear" ng-click="clearCompleted()">Clear Completed Tasks</button>
+                 </form>
+
+                  <ul>
+                      <li ng-repeat="todo in todos">
+                         <input type="checkbox" ng-model="todo.done" />
+                         <span ng-class="{'done':todo.done}">{{todo.title}}</span>
+
+                      </li>  
+                  </ul>
+
+                </div>
+       </div>
+       
+      
+      
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+       
+       <script>
+           angular.module('ToDo',[]).
+           controller('todoController',['$scope',function($scope){
+               $scope.todos = [
+                   {'title': 'Build a to do app', 'done':false}
+               ];
+               
+               $scope.addTodo = function(){
+                   $scope.todos.push({'title':$scope.newTodo,'done':false})
+                   $scope.newTodo = ''
+                   
+               }
+               $scope.clearCompleted = function(){
+                   $scope.todos = $scope.todos.filter(function(item){
+                       return !item.done
+                   })
+               }
+               
+           }])
+       </script>
+   </body>
+   
+</html>

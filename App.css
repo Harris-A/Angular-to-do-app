@@ -1,0 +1,45 @@
+.done{
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+body{
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-size: 16px;
+}
+form{
+    text-align: center;
+    margin-bottom: 20px;
+}
+ul{
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+}
+
+li{
+    padding: 20px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    font-size: 24px;
+    align-items: center;
+    display:flex;
+    border: solid 2px green;
+}
+
+input,
+button {
+    font-size: 18px;
+    padding: 30px;
+    border-radius: 10px;
+    outline: 0;
+}
+
+button#btn-clear{
+    text-align: center;
+    display: inline-block;
+    background: red;
+    color: #fff;
+    font-weight: bold;
+}
